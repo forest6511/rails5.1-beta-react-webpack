@@ -35,8 +35,8 @@ $ npm -v
 ```
  
 * Configuration
-- node module install for React and webpack - see package.json
-  issue 'npm install' then install node_module following by package.json in your project.
+- Install node modules for React and webpack - see package.json
+  - issue 'npm install' then install node_module following by package.json in your project.
 ```
 npm install react react-dom react-router --save
 npm install babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0 --save-dev
@@ -44,7 +44,7 @@ npm install webpack webpack-merge webpack-dev-server path process glob path-comp
 ```
 
 * Run Webpack
-webpack watch js or jsx files with 8080 ports
+- webpack watch js or jsx files with 8080 ports
 ```
 $ ./bin/webpack-dev-server --hot --host localhost
 ```
