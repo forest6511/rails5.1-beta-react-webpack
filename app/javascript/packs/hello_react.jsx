@@ -4,20 +4,18 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var {getMuiTheme, MuiThemeProvider} = require('material-ui/styles');
+var {RaisedButton} = require('material-ui');
 
+var HelloReact = () => (
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <RaisedButton label="Hello React Material UI"/>
+    </MuiThemeProvider>
+);
 
-var HelloReact = React.createClass({
-  render: function () {
-    return (
-        <div>
-          <h1>Hello {this.props.name}</h1>
-        </div>
-    );
-  }
-});
 
 ReactDOM.render(
-    <HelloReact name="React!!"/>,
+    <HelloReact/>,
     document.getElementById('app')
 );
 
