@@ -50,11 +50,14 @@ config = {
   ],
 
   resolve: {
-    extensions: [ '.js', '.coffee' ],
+    extensions: [ '.jsx', '.js', '.coffee' ],
     modules: [
       path.resolve('app/javascript'),
       path.resolve('node_modules')
-    ]
+    ],
+    alias: {
+      Header: 'packs/components/Header.jsx',
+    },
   },
 
   resolveLoader: {

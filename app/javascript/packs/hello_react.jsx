@@ -6,13 +6,27 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {getMuiTheme, MuiThemeProvider} = require('material-ui/styles');
 var {RaisedButton} = require('material-ui');
+var injectTapEventPlugin = require('react-tap-event-plugin');
+var Header = require('Header');
 
-var HelloReact = () => (
-    <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <RaisedButton label="Hello React Material UI"/>
-    </MuiThemeProvider>
-);
+injectTapEventPlugin();
 
+var HelloReact = React.createClass({
+    render: function () {
+        return (
+            <MuiThemeProvider muiTheme={getMuiTheme()}>
+                <div>
+                    <Header/>
+                    <div className="index">
+                        <div>
+                            <RaisedButton label="OK" primary={true} />
+                        </div>
+                    </div>
+                </div>
+            </MuiThemeProvider>
+        );
+    }
+});
 
 ReactDOM.render(
     <HelloReact/>,
