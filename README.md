@@ -79,6 +79,16 @@ Puma starting in single mode...
 * Database initialization
 
 * How to run the test suite
+    * install frontend modules (karma - mocha)
+    
+```
+npm install expect jquery karma karma-chrome-launcher karma-mocha karma-sourcemap-loader karma-webpack karma-mocha-reporter mocha react-addons-test-utils script-loader --save-dev
+```
+
+* Run karma
+```
+npm test or ./node_modules/karma/bin/karma start
+```
 
 * Services (job queues, cache servers, search engines, etc.)
 

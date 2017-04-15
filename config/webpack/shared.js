@@ -19,9 +19,7 @@ config = {
       return map
     }, {}
   ),
-
   output: { filename: '[name].js', path: path.resolve('public', distDir) },
-
   module: {
     rules: [
       { test: /\.coffee(.erb)?$/, loader: "coffee-loader" },
@@ -44,11 +42,20 @@ config = {
       },
     ]
   },
-
+  // Ref. https://webpack.github.io/docs/library-and-externals.html
+  // depends on "jquery", but jquery should not be included in the bundle.
+  externals: {
+    jquery: 'jQuery'
+  },
   plugins: [
-    new webpack.EnvironmentPlugin(Object.keys(process.env))
+    new webpack.EnvironmentPlugin(Object.keys(process.env)),
+    // Ref. https://webpack.github.io/docs/shimming-modules.html
+    // This plugin makes a module available as a variable in every module. The module is required only if you use the variable.
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
   ],
-
   resolve: {
     extensions: [ '.jsx', '.js', '.coffee' ],
     modules: [
