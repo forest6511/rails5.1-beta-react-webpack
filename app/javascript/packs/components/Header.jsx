@@ -5,7 +5,22 @@ var {getMuiTheme, MuiThemeProvider} = require('material-ui/styles');
 var Header = React.createClass({
     getInitialState: function () {
         return {
-            open: false
+            open: false,
+            menus: [
+                {
+                    id: 1,
+                    title: '管理メニューA'
+                }, {
+                    id: 2,
+                    title: '管理メニューB'
+                }, {
+                    id: 3,
+                    title: '管理メニューC'
+                }, {
+                    id: 4,
+                    title: '管理メニューD'
+                }
+            ]
         };
     },
     handleToggle: function () {
@@ -15,6 +30,15 @@ var Header = React.createClass({
         this.setState(this.setState({open: false}));
     },
     render: function () {
+        // change this.state to this.props by moving menus array to another component.
+        var {menus} = this.state;
+        var renderMenus = () => {
+            return menus.map((menu) => {
+                return (
+                    <MenuItem key={menu.id} onTouchTap={this.handleClose}>{menu.title}</MenuItem>
+                );
+            });
+        };
         return (
             <MuiThemeProvider muiTheme={getMuiTheme()}>
                 <div>
@@ -29,8 +53,7 @@ var Header = React.createClass({
                         open={this.state.open}
                         onRequestChange={(open) => this.setState({open})}
                     >
-                        <MenuItem onTouchTap={this.handleClose}>管理メニューA</MenuItem>
-                        <MenuItem onTouchTap={this.handleClose}>管理メニューB</MenuItem>
+                        {renderMenus()}
                     </Drawer>
                 </div>
             </MuiThemeProvider>
